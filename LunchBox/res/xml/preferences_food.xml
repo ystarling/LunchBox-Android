@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="Settings" android:key="settings">
     <PreferenceCategory android:title="Food selection" android:key="food_selection">
-        <MultiSelectListPreference android:key="exclude_food" android:title="Excluded food" android:entries="@array/exclude_food_lables" android:entryValues="@array/exclude_food_values" android:defaultValue="@array/exclude_food_values_default" android:summary="Food that you do not like"/>
-        <MultiSelectListPreference android:key="food_restrictions" android:title="Food restrictions" android:entries="@array/food_restrictions_lables" android:entryValues="@array/food_restrictions_values" android:defaultValue="@array/food_restrictions_values_default" android:summary="Food that you can not have"/>
+        <MultiSelectListPreference android:key="exclude_food" android:title="Excluded food" android:entries="@array/exclude_food_lables" android:entryValues="@array/exclude_food_values" android:defaultValue="@array/exclude_food_values_default" android:summary="@string/exclude_food_summary"/>
+        <MultiSelectListPreference android:key="food_restrictions" android:title="Food restrictions" android:entries="@array/food_restrictions_lables" android:entryValues="@array/food_restrictions_values" android:defaultValue="@array/food_restrictions_values_default" android:summary="@string/restrict_food_summary"/>
     </PreferenceCategory>
 </PreferenceScreen>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="exclude_food_summary" type="string" format="string">Food that you do not like</item>
+    <item name="restrict_food_summary" type="string" format="string">Not liking these foods</item>
+    <item name="no_food_restriction" type="string" format="string">No food restriction!</item>
+    <item name="no_food_exclusion" type="string" format="string">Enjoy all kind of food!</item>
+    
+</resources>

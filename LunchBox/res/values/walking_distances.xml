@@ -2,14 +2,14 @@
 <resources>
     <string-array name="walking_distance_values">
         <item>500</item>
-        <item >1000</item>
-        <item >1500</item>
-        <item >2000</item>      
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>      
     </string-array>
     <string-array name="walking_distance_lables">
-        <item>0.5 Km</item>
-        <item >1 Km</item>
-        <item >1.5 Km</item>
-        <item >2 Km</item>favourite   
+        <item>Walk up to 0.5 Km</item>
+        <item>Walk up to 1 Km</item>
+        <item>Walk up to 1.5 Km</item>
+        <item>Walk up to 2 Km</item>
     </string-array>
 </resources>

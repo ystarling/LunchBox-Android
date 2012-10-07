@@ -1,34 +1,26 @@
 package com.ahura.lunchbox.settings;
 
+
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.ahura.lunchbox.R;
-import com.ahura.lunchbox.R.xml;
 
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
-import android.preference.PreferenceManager;
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.widget.Button;
-import android.widget.Toast;
+
 
 public class SettingsActivity extends PreferenceActivity {
 
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        
-        /*// Add a button to the header list.
-        if (hasHeaders()) {
-            Button button = new Button(this);
-            button.setText("Some action");
-            setListFooter(button);
-        }*/
     }
 
     /**
@@ -40,42 +32,79 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     /**
-     * This fragment shows the preferences for the first header.
+     * This fragment shows the preferences for the radius header.
      */
     public static class ResultRadiusFragment extends PreferenceFragment {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
-            // Make sure default values are applied.  In a real app, you would
-            // want this in a shared function that is used to retrieve the
-            // SharedPreferences wherever they are needed.
-            //PreferenceManager.setDefaultValues(getActivity(),
-            //        R.xml.preferences, false);
-
-            // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences_distance);
+            
+           ListPreference listPreference = (ListPreference) findPreference("walking_distance");
+           listPreference.setSummary(listPreference.getEntry());
+           
+           listPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+					ListPreference listPreference = (ListPreference) preference;
+					int index = listPreference.findIndexOfValue(newValue.toString());
+					preference.setSummary(listPreference.getEntries()[index]);
+					return true;
+				}
+			});
         }
     }
     
     /**
-     * This fragment shows the preferences for the first header.
+     * This fragment shows the preferences for the food selection header.
      */
     public static class FoodSelectionFragment extends PreferenceFragment {
+    	
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-
-            // Make sure default values are applied.  In a real app, you would
-            // want this in a shared function that is used to retrieve the
-            // SharedPreferences wherever they are needed.
-            //PreferenceManager.setDefaultValues(getActivity(),
-            //        R.xml.preferences, false);
-
-            // Load the preferences from an XML resource
             addPreferencesFromResource(R.xml.preferences_food);
+            fixMultiListSummary("food_restrictions", R.string.no_food_restriction);
+            fixMultiListSummary("exclude_food", R.string.no_food_exclusion);
+        }
+        
+        private Set<CharSequence> getSelectedEntries(
+        		Set<String> values, MultiSelectListPreference multilistPreference) {
+        	Set<CharSequence> labels = new HashSet<CharSequence>();
+        	for(String value: values) {
+        		int index = multilistPreference.findIndexOfValue(value);
+        		labels.add(multilistPreference.getEntries()[index]);
+        	}
+        	multilistPreference.setSummary(labels.toString());
+	        return labels;
+        }
+        
+        private void fixMultiListSummary(final String name, final int emptyStringId){
+        	MultiSelectListPreference multilistPreference = (MultiSelectListPreference) findPreference(name);
+        	Set<String> values = multilistPreference.getValues();
+            if (values.size() > 0) {
+            	multilistPreference.setSummary(
+            			getSelectedEntries(multilistPreference.getValues(), multilistPreference)
+            			.toString());
+            }
+            
+            multilistPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+				public boolean onPreferenceChange(Preference preference, Object newValue) {
+ 					MultiSelectListPreference multilistPreference = (MultiSelectListPreference) preference;
+ 					@SuppressWarnings("unchecked")
+					Set<String> values = (Set<String>) newValue;
+ 					
+ 			        if (!values.isEmpty()) {
+ 			        	multilistPreference.setSummary(
+ 		            			getSelectedEntries(multilistPreference.getValues(), multilistPreference)
+ 		            			.toString());
+ 			        }
+ 			        else{
+ 			        	multilistPreference.setSummary(emptyStringId);
+ 			        }
+ 					return true;
+ 				}
+ 			});
         }
     }
-
 
 }
