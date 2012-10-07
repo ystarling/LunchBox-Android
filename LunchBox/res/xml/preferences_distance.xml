@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:title="Settings" android:key="settings">
     <PreferenceCategory android:title="Result radius" android:key="result_radius">
-        <ListPreference android:key="walking_distance" android:title="Walking distance" android:entries="@array/walking_distance_lables" android:entryValues="@array/walking_distance_values"/>
-        <CheckBoxPreference android:key="use_weather" android:title="Adjust with weather"/>
+        <ListPreference android:key="walking_distance" android:title="Walking distance" android:entries="@array/walking_distance_lables" android:entryValues="@array/walking_distance_values" android:defaultValue="@integer/walking_distance_default"/>
+        <CheckBoxPreference android:key="use_weather" android:title="Adjust with weather" android:defaultValue="@bool/use_weather_default"/>
     </PreferenceCategory>
-    <PreferenceCategory android:title="Food selection" android:key="food_selection">
-        <MultiSelectListPreference android:key="favourite_cuisine" android:title="Favourite cuisine" android:entries="@array/food_cuisine_lables" android:entryValues="@array/food_cuisine_values"/>
-        <MultiSelectListPreference android:key="food_restrictions" android:title="Food restrictions" android:entries="@array/food_restrictions_lables" android:entryValues="@array/food_restrictions_values"/>
-    </PreferenceCategory>
-    
-
 </PreferenceScreen>

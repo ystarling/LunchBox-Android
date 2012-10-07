@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<preference-headers
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <header android:fragment="com.ahura.lunchbox.settings.SettingsActivity$ResultRadiusFragment"
+            android:title="Walking distance"
+            android:summary="How far are you willing to walk to get your lunch?"
+            android:icon="@drawable/ic_action_search"/>
+
+    <header android:fragment="com.ahura.lunchbox.settings.SettingsActivity$FoodSelectionFragment"
+            android:title="Food selection"
+            android:summary="Restrictions and cousine preferencies"
+            android:icon="@drawable/ic_action_search" />
+</preference-headers>

@@ -1,4 +1,9 @@
-package com.ahura.lunchbox;
+package com.ahura.lunchbox.settings;
+
+import java.util.List;
+
+import com.ahura.lunchbox.R;
+import com.ahura.lunchbox.R.xml;
 
 import android.os.Bundle;
 import android.preference.Preference;
@@ -8,42 +13,69 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class SettingsActivity extends PreferenceActivity {
 
-	/*
-	 * @Override public void onCreate(Bundle savedInstanceState) {
-	 * super.onCreate(savedInstanceState);
-	 * setContentView(R.layout.activity_settings); }
-	 * 
-	 * @Override public boolean onCreateOptionsMenu(Menu menu) {
-	 * getMenuInflater().inflate(R.menu.activity_settings, menu); return true; }
-	 */
-
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences);
-		// Get the custom preference
-		//PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
-		Preference customPref = (Preference) findPreference("settings");
-		customPref.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-					public boolean onPreferenceClick(Preference preference) {
-						Toast.makeText(getBaseContext(),
-								"The custom preference has been clicked",
-								Toast.LENGTH_LONG).show();
-						SharedPreferences customSharedPreference = getSharedPreferences(
-								"myCustomSharedPrefs", Activity.MODE_PRIVATE);
-						SharedPreferences.Editor editor = customSharedPreference
-								.edit();
-						editor.putString("myCustomPref",
-								"The preference has been clicked");
-						editor.commit();
-						return true;
-					}
+        
+        /*// Add a button to the header list.
+        if (hasHeaders()) {
+            Button button = new Button(this);
+            button.setText("Some action");
+            setListFooter(button);
+        }*/
+    }
 
-				});
-	}
+    /**
+     * Populate the activity with the top-level headers.
+     */
+    @Override
+    public void onBuildHeaders(List<Header> target) {
+        loadHeadersFromResource(R.xml.setting_headers, target);
+    }
+
+    /**
+     * This fragment shows the preferences for the first header.
+     */
+    public static class ResultRadiusFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            // Make sure default values are applied.  In a real app, you would
+            // want this in a shared function that is used to retrieve the
+            // SharedPreferences wherever they are needed.
+            //PreferenceManager.setDefaultValues(getActivity(),
+            //        R.xml.preferences, false);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences_distance);
+        }
+    }
+    
+    /**
+     * This fragment shows the preferences for the first header.
+     */
+    public static class FoodSelectionFragment extends PreferenceFragment {
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            // Make sure default values are applied.  In a real app, you would
+            // want this in a shared function that is used to retrieve the
+            // SharedPreferences wherever they are needed.
+            //PreferenceManager.setDefaultValues(getActivity(),
+            //        R.xml.preferences, false);
+
+            // Load the preferences from an XML resource
+            addPreferencesFromResource(R.xml.preferences_food);
+        }
+    }
+
+
 }

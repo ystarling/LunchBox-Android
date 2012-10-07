@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <string-array name="food_cuisine_values">
-        <item>500</item>
-        <item >1000</item>
-        <item >1500</item>
-        <item >2000</item>      
+     <string-array name="exclude_food_values">
+        <item>chinese</item>
+        <item>fast food</item>
+        <item>greek</item>
+        <item>indian</item>
+        <item>italian</item>
+        <item>japanize</item>
+        <item>kebab</item>
+        <item>mexican</item>
+        <item>middleeastern</item>        
+        <item>sandwich</item>
+        <item>salad</item>
+        <item>thai</item>
     </string-array>
-    <string-array name="food_cuisine_lables">
-        <item>0.5 Km</item>
-        <item >1 Km</item>
-        <item >1.5 Km</item>
-        <item >2 Km</item>favourite   
+    <string-array name="exclude_food_lables">
+        <item>Chinese</item>
+        <item>Fast food</item>
+        <item>Greek</item>
+        <item>Indian</item>
+        <item>Italian</item>
+        <item>Japanize</item>
+        <item>Kebab</item>
+        <item>Mexican</item>
+        <item>Middleeastern</item>        
+        <item>Sandwich</item>
+        <item>Salad</item>
+        <item>Thai</item>  
+    </string-array>
+    <string-array name="exclude_food_values_default">
+        <item>fast food</item>
     </string-array>
 </resources>

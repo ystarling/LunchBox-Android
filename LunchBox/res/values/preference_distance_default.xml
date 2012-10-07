@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="walking_distance_default" type="integer" format="integer">1</item>
+    <item name="use_weather_default" type="bool" format="boolean">true</item>
+    
+</resources>
