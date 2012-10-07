@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     <string-array name="food_restrictions_values">
+        <item>500</item>
+        <item >1000</item>
+        <item >1500</item>
+        <item >2000</item>      
+    </string-array>
+    <string-array name="food_restrictions_lables">
+        <item>0.5 Km</item>
+        <item >1 Km</item>
+        <item >1.5 Km</item>
+        <item >2 Km</item>favourite   
+    </string-array>
+    
+</resources>
