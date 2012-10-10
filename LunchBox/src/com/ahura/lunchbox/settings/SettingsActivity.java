@@ -1,12 +1,8 @@
 package com.ahura.lunchbox.settings;
 
-
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.ahura.lunchbox.R;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -14,6 +10,8 @@ import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+
+import com.ahura.lunchbox.R;
 
 
 public class SettingsActivity extends PreferenceActivity {

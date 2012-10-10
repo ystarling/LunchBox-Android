@@ -12,4 +12,6 @@
         <item>Walk up to 1.5 Km</item>
         <item>Walk up to 2 Km</item>
     </string-array>
+    <item name="walking_distance_default" type="integer" format="integer">1</item>
+    <item name="use_weather_default" type="bool" format="boolean">true</item>
 </resources>

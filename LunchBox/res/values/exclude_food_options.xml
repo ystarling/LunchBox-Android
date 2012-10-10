@@ -31,4 +31,6 @@
     <string-array name="exclude_food_values_default">
         <item>fast food</item>
     </string-array>
+    <item name="exclude_food_summary" type="string" format="string">Food that you do not like</item>
+    <item name="no_food_exclusion" type="string" format="string">Enjoy all kind of food!</item>
 </resources>

@@ -5,5 +5,8 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_settings">SettingsActivity</string>
-
+    <string name="title_activity_restaurant_detail_portrait_layout">RestaurantDetail</string>
+    <string name="title_activity_restaurant_detail">RestaurantDetail</string>
+    <string name="title_activity_lunch_box">LunchBoxActivity</string>
+    <string name="title_activity_where_am_i">WhereAmI</string>
 </resources>

@@ -16,4 +16,6 @@
     </string-array>
     <string-array name="food_restrictions_values_default">
     </string-array>
+    <item name="restrict_food_summary" type="string" format="string">Not liking these foods</item>
+    <item name="no_food_restriction" type="string" format="string">No food restriction!</item>
 </resources>
