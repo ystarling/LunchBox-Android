@@ -4,4 +4,6 @@
         <ListPreference android:key="walking_distance" android:title="Walking distance" android:entries="@array/walking_distance_lables" android:entryValues="@array/walking_distance_values" android:defaultValue="@integer/walking_distance_default"/>
         <CheckBoxPreference android:key="use_weather" android:title="Adjust with weather" android:defaultValue="@bool/use_weather_default"/>
     </PreferenceCategory>
+    <EditTextPreference android:key="number_of_results" android:title="Number of results" android:summary="@string/number_of_result_summary" android:defaultValue="@integer/use_number_of_result_default"/>
+    <CheckBoxPreference android:summary="@string/extend_search_summary" android:title="@string/extend_search" android:defaultValue="@bool/extend_result_default" android:key="extend_search"/>
 </PreferenceScreen>

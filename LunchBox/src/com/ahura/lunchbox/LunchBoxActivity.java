@@ -1,6 +1,8 @@
 package com.ahura.lunchbox;
 
 import com.ahura.lunchbox.settings.SettingsActivity;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapView;
 
 import android.location.Location;
 import android.location.LocationManager;
@@ -12,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class LunchBoxActivity extends Activity {
+public class LunchBoxActivity extends MapActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,9 @@ public class LunchBoxActivity extends Activity {
         String provider = LocationManager.GPS_PROVIDER;
         Location location = locationManager.getLastKnownLocation(provider);
         updateWithNewLocation(location);
+        
+        MapView mapView = (MapView) findViewById(R.id.mapview);
+        mapView.setBuiltInZoomControls(true);
     }
 
     private void updateWithNewLocation(Location location) {
@@ -57,4 +62,10 @@ public class LunchBoxActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+	@Override
+	protected boolean isRouteDisplayed() {
+		// return true is the view is displaying driving directions
+		return false;
+	}
 }

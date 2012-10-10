@@ -9,4 +9,7 @@
     <string name="title_activity_restaurant_detail">RestaurantDetail</string>
     <string name="title_activity_lunch_box">LunchBoxActivity</string>
     <string name="title_activity_where_am_i">WhereAmI</string>
+    <string name="number_of_result_summary">The number of results illustrated on the map</string>
+    <string name="extend_search">Extend search</string>
+    <string name="extend_search_summary">Extend the search radius if there is no result</string>
 </resources>

@@ -14,4 +14,6 @@
     </string-array>
     <item name="walking_distance_default" type="integer" format="integer">1</item>
     <item name="use_weather_default" type="bool" format="boolean">true</item>
+    <item name="use_number_of_result_default" type="integer" format="integer">3</item>
+    <item name="extend_result_default" type="bool" format="boolean">true</item>
 </resources>
