@@ -1,35 +1,48 @@
 package com.ahura.lunchbox;
 
-import com.ahura.lunchbox.settings.SettingsActivity;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapView;
-
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.android.maps.GeoPoint;
+import com.google.android.maps.MapActivity;
+import com.google.android.maps.MapController;
+import com.google.android.maps.MapView;
+
+import com.ahura.lunchbox.settings.SettingsActivity;
+
+
 public class LunchBoxActivity extends MapActivity {
 
+	private MapView mapView;
+	private MapController mapController;
+	private LocationManager locationManager;
+    
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lunch_box);
         
-        LocationManager locationManager;
         String svcName = Context.LOCATION_SERVICE;
         locationManager = (LocationManager)getSystemService(svcName);
         String provider = LocationManager.GPS_PROVIDER;
         Location location = locationManager.getLastKnownLocation(provider);
         updateWithNewLocation(location);
         
-        MapView mapView = (MapView) findViewById(R.id.mapview);
+        mapView = (MapView) findViewById(R.id.mapview);
+        mapController = mapView.getController();
         mapView.setBuiltInZoomControls(true);
+        
+        mapController.animateTo(
+        		new GeoPoint(
+        				(int) (location.getLatitude() * 1E6), 
+        				(int) (location.getLongitude() * 1E6)));
     }
 
     private void updateWithNewLocation(Location location) {

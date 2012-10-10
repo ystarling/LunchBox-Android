@@ -20,9 +20,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity><activity
-            android:name=".restaurants.RestaurantDetail"
-            android:label="@string/title_activity_restaurant_detail" android:screenOrientation="sensor">
+        </activity><activity android:name=".restaurants.RestaurantDetail" android:label="@string/title_activity_restaurant_detail" android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

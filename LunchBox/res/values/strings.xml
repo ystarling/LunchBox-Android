@@ -3,13 +3,11 @@
     <string name="app_name">LunchBox</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="title_activity_restaurant_detail_portrait_layout">RestaurantDetail</string>
-    <string name="title_activity_restaurant_detail">RestaurantDetail</string>
-    <string name="title_activity_lunch_box">LunchBoxActivity</string>
-    <string name="title_activity_where_am_i">WhereAmI</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_restaurant_detail">Restaurant Detail</string>
+    <string name="title_activity_lunch_box">Lunch Box</string>
     <string name="number_of_result_summary">The number of results illustrated on the map</string>
     <string name="extend_search">Extend search</string>
     <string name="extend_search_summary">Extend the search radius if there is no result</string>
+    <string name="menu_discard">Discard this restaurant</string>
 </resources>
