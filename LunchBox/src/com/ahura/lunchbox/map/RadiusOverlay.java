@@ -10,7 +10,7 @@ import android.graphics.RectF;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.Projection;
+
 
 public class RadiusOverlay extends Overlay {
 
@@ -32,8 +32,6 @@ public class RadiusOverlay extends Overlay {
 	@Override
 	public void draw(Canvas canvas, MapView mapview, boolean shadow) {
 		if (shadow == false && geopoint != null) {
-			Point myPoint = GeoUtils.projectGeoPoint(mapview, geopoint);
-
 			// create and setup the paint brush
 			Paint paint = new Paint();
 			paint.setARGB(255, 0, 0, 255);

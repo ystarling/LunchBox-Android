@@ -8,7 +8,6 @@ import android.graphics.RectF;
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
-import com.google.android.maps.Projection;
 
 public class MyLocationOverlay extends Overlay {
 

@@ -8,10 +8,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.RadialGradient;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
