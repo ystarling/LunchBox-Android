@@ -3,19 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/textViewMyLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
     
     <com.google.android.maps.MapView
-	    android:id="@+id/mapview"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:clickable="true"
-	    android:apiKey="Your Maps API Key goes here"
-	/>
+         android:id="@+id/mapview"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:apiKey="0t9MZ_1AvpBj7bPXvu8JiSDA8-9ft4AcTXqFDbA"
+                 android:clickable="true"
+                 android:enabled="true"/>
 
 </LinearLayout>
