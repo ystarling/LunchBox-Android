@@ -10,4 +10,5 @@
     <string name="extend_search">Extend search</string>
     <string name="extend_search_summary">Extend the search radius if there is no result</string>
     <string name="menu_discard">Discard this restaurant</string>
+    <string name="button_reload">Load </string>
 </resources>

@@ -10,6 +10,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -20,14 +23,23 @@ import com.google.android.maps.Overlay;
 import com.ahura.lunchbox.map.MyLocationOverlay;
 import com.ahura.lunchbox.map.RadiusOverlay;
 import com.ahura.lunchbox.settings.SettingsActivity;
+import com.ahura.places.SearchRequest;
+import com.ahura.places.SearchResultsListener;
+import com.ahura.places.SearchResultsParser;
+import com.ahura.places.models.SearchResult;
 
-public class LunchBoxActivity extends MapActivity implements LocationListener {
+public class LunchBoxActivity extends MapActivity
+		implements LocationListener, Button.OnClickListener, SearchResultsListener {
 
 	private MapView mapView;
 	private MapController mapController;
 	private LocationManager locationManager;
 	private MyLocationOverlay myLocationOverlay;
 	private RadiusOverlay radiusOverlay;
+	
+	private SearchResultsParser searchResultParser;
+	
+	private boolean shouldRefreshPlaces = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -48,12 +60,24 @@ public class LunchBoxActivity extends MapActivity implements LocationListener {
 		myLocationOverlays.add(radiusOverlay);
 		mapView.postInvalidate();
 
+		// Set a flag to initialize places request.
+		shouldRefreshPlaces = true;
+		searchResultParser = new SearchResultsParser(getResources().getString(R.string.google_key));
+		searchResultParser.add(this);
+		
 		mapController.setZoom(17);
 		locationManager.requestLocationUpdates(
 				LocationManager.GPS_PROVIDER, 2000, 10, this);
 		updateWithNewLocation(
 				locationManager.getLastKnownLocation(
 						LocationManager.GPS_PROVIDER));
+		
+		
+		
+	    //Retrieve the button object
+	    Button myButton = (Button)findViewById(R.id.button_load);
+		//Attach the listener
+	    myButton.setOnClickListener(this);
 	}
 
 	private void updateWithNewLocation(Location location) {
@@ -67,8 +91,20 @@ public class LunchBoxActivity extends MapActivity implements LocationListener {
 		radiusOverlay.setGeopoint(geopoint);
 		radiusOverlay.setRadiusMeters(100);
 		mapController.animateTo(geopoint);
+		
+		// If the flag set load from google places
+		if(shouldRefreshPlaces == true){
+			SearchRequest request = new SearchRequest()
+					.putLocation(location)
+					.putRadius(2000) // TODO read the radius from preferences
+					.putSensor(true);
+					//.putType("XXX"); // TODO search only for restaurant
+			searchResultParser.search(request);
+			shouldRefreshPlaces = false;
+		}
+			
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.activity_lunch_box, menu);
@@ -111,4 +147,17 @@ public class LunchBoxActivity extends MapActivity implements LocationListener {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void onClick(View v) {
+		Toast.makeText(v.getContext(), "Loading google map", Toast.LENGTH_SHORT).show();
+		// set a flag indicating that we have to fetch google places api
+		shouldRefreshPlaces = true;
+		
+	}
+
+	public void onSearchResultFetched(SearchResult searchResult) {
+		// TODO draw restaurants on map
+	}
+	
+ 
 }
